@@ -41,21 +41,12 @@ function add_button(){
 }
 
 function learn(t){
-    const video = document.querySelector("#player2")
-    if(!video)return;
-    t.target.disabled = true
-    let countdown = 3
-
     const url = 'https://cdn.jsdelivr.net/gh/dduutt/faxuan_online/learn_course.js'
-
-    const timer = setInterval(()=>{
-        t.target.innerHTML = `剩余${countdown}`
-        countdown--
-    },1000)
+    t.target.disabled = true;
+    t.target.innerHTML = '学习中';
+    kill_course();
     setTimeout(()=>{
-        t.target.disabled = false
-        t.target.innerHTML = '开始学习'
-        clearInterval(timer)
-    }, countdown*1000)
-    kill_course()
+        t.target.disabled = true;
+        t.target.innerHTML = '开始学习';
+    },3000)
 }
